@@ -1,8 +1,6 @@
 #tag Module
 Protected Module Notes
 	#tag Note, Name = Read Me
-		
-		
 	#tag EndNote
 
 	#tag Note, Name = ToDoList
