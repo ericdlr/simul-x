@@ -9,7 +9,7 @@ Protected Module Globals
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function Using(inValue As Double, inFormat As String) As String
+		Function FormatUsing(inValue As Double, inFormat As String) As String
 		  
 		  Const kSpaces = "          " // 10 Spaces
 		  
