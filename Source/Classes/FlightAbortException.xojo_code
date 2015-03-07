@@ -71,6 +71,16 @@ Inherits RuntimeException
 			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="pAbortReason"
+			Group="Behavior"
+			Type="FlightAbortException.Reason"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Reason"
+			Group="Behavior"
+			Type="Text"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Super"
 			Visible=true
 			Group="ID"

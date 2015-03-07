@@ -159,7 +159,7 @@ End
 		  
 		  System.DebugLog CurrentMethodName + " --- '" + Key + "'"
 		  
-		  Self.TextOutput.PrintAt 23, 1, Using( Asc( Key ), "###" )
+		  Self.TextOutput.PrintAt 23, 1, FormatUsing( Asc( Key ), "###" )
 		  
 		  If Self.MainMenuOnScreen Then
 		    
@@ -506,9 +506,9 @@ End
 		  If Not ( theDate Is Nil ) Then
 		    
 		    // We have a date to display
-		    TextOutput.PrintAt 15, 21, Using( theDate.Hour, "00" )
-		    TextOutput.PrintAt 15, 24, Using( theDate.Minute, "00" )
-		    TextOutput.PrintAt 15, 27, Using( theDate.Second, "00" )
+		    TextOutput.PrintAt 15, 21, FormatUsing( theDate.Hour, "00" )
+		    TextOutput.PrintAt 15, 24, FormatUsing( theDate.Minute, "00" )
+		    TextOutput.PrintAt 15, 27, FormatUsing( theDate.Second, "00" )
 		    
 		  Else
 		    
@@ -525,13 +525,13 @@ End
 		  If Not ( thePlane Is Nil ) Then
 		    
 		    // Displaying the Fuel, Heading and speed data
-		    TextOutput.PrintAt 15, 65, Using( thePlane.Fuel, "##,##0" )
-		    TextOutput.PrintAt 15, 72, Using( thePlane.FuelPercent, "#0" )
-		    TextOutput.PrintAt 15, 38, Using( thePlane.Compass, "###" )
+		    TextOutput.PrintAt 15, 65, FormatUsing( thePlane.Fuel, "##,##0" )
+		    TextOutput.PrintAt 15, 72, FormatUsing( thePlane.FuelPercent, "#0" )
+		    TextOutput.PrintAt 15, 38, FormatUsing( thePlane.Compass, "###" )
 		    
 		    If thePlane.CourseTracking Then
 		      
-		      TextOutput.PrintAt 16, 38, Using( thePlane.Course, "###" )
+		      TextOutput.PrintAt 16, 38, FormatUsing( thePlane.Course, "###" )
 		      
 		    Else
 		      
@@ -539,11 +539,11 @@ End
 		      
 		    End If
 		    
-		    TextOutput.PrintAt 21, 38, Using( thePlane.AirSpeed, "##0" )
+		    TextOutput.PrintAt 21, 38, FormatUsing( thePlane.AirSpeed, "##0" )
 		    
 		    // The Z dimension data
-		    TextOutput.PrintAt 18, 21, Using( thePlane.Altitude, "##,##0" )
-		    TextOutput.PrintAt 21, 21, Using( thePlane.AltitudeRadar, "##,##0" )
+		    TextOutput.PrintAt 18, 21, FormatUsing( thePlane.Altitude, "##,##0" )
+		    TextOutput.PrintAt 21, 21, FormatUsing( thePlane.AltitudeRadar, "##,##0" )
 		    
 		    // The Vertical speed
 		    Dim theVertSpeed As Double = thePlane.VerticalSpeed
@@ -562,10 +562,10 @@ End
 		      
 		    End If
 		    
-		    TextOutput.PrintAt 19, 7, Using( theVertSpeed, "##,##0" )
+		    TextOutput.PrintAt 19, 7, FormatUsing( theVertSpeed, "##,##0" )
 		    
 		    // The pitch...
-		    TextOutput.PrintAt 15, 52, Using( thePlane.Pitch, "#0" )
+		    TextOutput.PrintAt 15, 52, FormatUsing( thePlane.Pitch, "#0" )
 		    
 		    // ...And the its sign
 		    Select Case Sign( thePlane.Pitch )
@@ -588,14 +588,14 @@ End
 		    Dim theLongDeg As Integer = CType( thePlane.Longitude, Integer )
 		    Dim theLongMin As Double = ( thePlane.Longitude - theLongDeg ) * 60
 		    
-		    TextOutput.PrintAt 15, 6, Using( theLatDeg, "#0" )
-		    TextOutput.PrintAt 15, 9, Using( theLatMin, "#0.0" )
-		    TextOutput.PrintAt 16, 6, Using( theLongDeg, "#0" )
-		    TextOutput.PrintAt 16, 9, Using( theLongMin, "#0.0" )
+		    TextOutput.PrintAt 15, 6, FormatUsing( theLatDeg, "#0" )
+		    TextOutput.PrintAt 15, 9, FormatUsing( theLatMin, "#0.0" )
+		    TextOutput.PrintAt 16, 6, FormatUsing( theLongDeg, "#0" )
+		    TextOutput.PrintAt 16, 9, FormatUsing( theLongMin, "#0.0" )
 		    
 		    // Radio navigation data
-		    TextOutput.PrintAt 1, 4, Using( thePlane.VORFrequency, "##0.0" )
-		    TextOutput.PrintAt 4, 5, Using( thePlane.VORSelectedRadial, "##0" )
+		    TextOutput.PrintAt 1, 4, FormatUsing( thePlane.VORFrequency, "##0.0" )
+		    TextOutput.PrintAt 4, 5, FormatUsing( thePlane.VORSelectedRadial, "##0" )
 		    
 		    TextOutput.PrintAt 1, 15, thePlane.VORRange
 		    Self.DisplayVORData
@@ -731,7 +731,7 @@ End
 		  // The DME
 		  If Self.myPlane.VORRange <> "OUT " Then
 		    
-		    TextOutput.PrintAt 9, 4, Using( Self.myPlane.DME, "###.0" )
+		    TextOutput.PrintAt 9, 4, FormatUsing( Self.myPlane.DME, "###.0" )
 		    
 		  Else
 		    
@@ -1138,6 +1138,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="LiveResize"
@@ -1222,6 +1223,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Placement"
@@ -1256,6 +1258,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"

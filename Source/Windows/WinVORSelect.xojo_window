@@ -48,6 +48,7 @@ Begin Window WinVORSelect
       Selectable      =   False
       TabIndex        =   0
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Known VORs:"
       TextAlign       =   2
       TextColor       =   &c00000000
@@ -113,6 +114,7 @@ Begin Window WinVORSelect
       Selectable      =   False
       TabIndex        =   2
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Desired radial:"
       TextAlign       =   2
       TextColor       =   &c00000000
@@ -217,6 +219,7 @@ Begin Window WinVORSelect
          Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Frequency:"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -314,6 +317,7 @@ Begin Window WinVORSelect
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "0° - 360°"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -589,6 +593,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="LiveResize"
@@ -668,6 +673,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Placement"
@@ -697,6 +703,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"
