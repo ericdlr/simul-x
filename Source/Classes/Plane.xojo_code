@@ -37,70 +37,70 @@ Inherits Thread
 		  // Here, we have finished the flight
 		  
 		  // Catching FlightAbortException
-		  Exception theException As FlightAbortException
+		Exception theException As FlightAbortException
+		  
+		  Select Case theException.AbortReason
 		    
-		    Select Case theException.AbortReason
-		      
-		    Case FlightAbortException.Reason.GearsUpWhileOnGround
-		      Self.AbortedFlyMessage = "It's better for the aircraft to stand on its landing  gear."
-		      
-		    Case FlightAbortException.Reason.FullThrustWhileBrakesOn
-		      Self.AbortedFlyMessage = "You must release the brakes before setting the thrust to FULL"
-		      
-		    Case FlightAbortException.Reason.RolledOfDecisionPoint
-		      Self.AbortedFlyMessage = "You rolled off the decision point for takeoff without action."
-		      
-		    Case FlightAbortException.Reason.RanOutOfTheRunway
-		      Dim theMessage() As String
-		      theMessage.Append "You ran out of the runway"
-		      
-		      If Abs( Self.GroundX ) > 100.0 Then
-		        
-		        theMessage.Append Format( Self.GroundX, "##0.00" ) + " Feet from the center line"
-		        
-		      End If
-		      
-		      If Self.GroundY > 10500.0 Then
-		        theMessage.Append " " + Format( Self.GroundY - 10500.0, "###,##0.00" ) + " Feet past end of the runway"
-		        
-		      ElseIf Self.GroundY < -9500.0 Then
-		        theMessage.Append " " + Format( Abs( Self.GroundY ) - 9500, "###,##0.00" ) + " Feet past end of the runway"
-		        
-		      End If
-		      
-		      Self.AbortedFlyMessage = Join( theMessage, EndOfLine ) + "."
-		      
-		      
-		    Case FlightAbortException.Reason.FailedInCrucialManeuvers
-		      Self.AbortedFlyMessage = "You failed in crucial maneuvers:" + EndOfLine _
-		      + "  1 - Landing gear raised below 400 Ft" + EndOfLine _
-		      + "  2 - Flaps to be retracted below 240 Kts" + EndOfLine _
-		      + "  3 - Flaps to be set bellow 200 Kts" + EndOfLine _
-		      + "  4 - Thrust reduce above 1500 Fts" + EndOfLine _
-		      + "  5 - Thrust reduce below 2000 Fts" + EndOfLine _
-		      + "  6 - Speed must not exceed 950 Kts"
-		      
-		    Case FlightAbortException.Reason.Crash
-		      Self.AbortedFlyMessage = "You flew into the ground..."
-		      
-		    Case FlightAbortException.Reason.TouchGroundBeforeRunway
-		      Self.AbortedFlyMessage = "You touch the ground before the runway..."
-		      
-		    Case FlightAbortException.Reason.OutOfFuel
-		      Self.AbortedFlyMessage = "You are out of fuel..."
-		      
-		    Case FlightAbortException.Reason.BrakesOnWhileGearsUp
-		      Self.AbortedFlyMessage = " You try to set the brakes when gears are up..."
-		      
-		    Else
-		      Self.AbortedFlyMessage = "Unknown reason !!!"
-		      
-		    End Select
+		  Case FlightAbortException.Reason.GearsUpWhileOnGround
+		    Self.AbortedFlyMessage = "It's better for the aircraft to stand on its landing  gear."
 		    
-		    System.DebugLog CurrentMethodName + ": " + Self.AbortedFlyMessage.ReplaceAll( EndOfLine, " & " )
-		    Self.CurrentMode = Plane.Mode.FlyAborted
+		  Case FlightAbortException.Reason.FullThrustWhileBrakesOn
+		    Self.AbortedFlyMessage = "You must release the brakes before setting the thrust to FULL"
 		    
-		    // End of the fly
+		  Case FlightAbortException.Reason.RolledOfDecisionPoint
+		    Self.AbortedFlyMessage = "You rolled off the decision point for takeoff without action."
+		    
+		  Case FlightAbortException.Reason.RanOutOfTheRunway
+		    Dim theMessage() As String
+		    theMessage.Append "You ran out of the runway"
+		    
+		    If Abs( Self.GroundX ) > 100.0 Then
+		      
+		      theMessage.Append Format( Self.GroundX, "##0.00" ) + " Feet from the center line"
+		      
+		    End If
+		    
+		    If Self.GroundY > 10500.0 Then
+		      theMessage.Append " " + Format( Self.GroundY - 10500.0, "###,##0.00" ) + " Feet past end of the runway"
+		      
+		    ElseIf Self.GroundY < -9500.0 Then
+		      theMessage.Append " " + Format( Abs( Self.GroundY ) - 9500, "###,##0.00" ) + " Feet past end of the runway"
+		      
+		    End If
+		    
+		    Self.AbortedFlyMessage = Join( theMessage, EndOfLine ) + "."
+		    
+		    
+		  Case FlightAbortException.Reason.FailedInCrucialManeuvers
+		    Self.AbortedFlyMessage = "You failed in crucial maneuvers:" + EndOfLine _
+		    + "  1 - Landing gear raised below 400 Ft" + EndOfLine _
+		    + "  2 - Flaps to be retracted below 240 Kts" + EndOfLine _
+		    + "  3 - Flaps to be set bellow 200 Kts" + EndOfLine _
+		    + "  4 - Thrust reduce above 1500 Fts" + EndOfLine _
+		    + "  5 - Thrust reduce below 2000 Fts" + EndOfLine _
+		    + "  6 - Speed must not exceed 950 Kts"
+		    
+		  Case FlightAbortException.Reason.Crash
+		    Self.AbortedFlyMessage = "You flew into the ground..."
+		    
+		  Case FlightAbortException.Reason.TouchGroundBeforeRunway
+		    Self.AbortedFlyMessage = "You touch the ground before the runway..."
+		    
+		  Case FlightAbortException.Reason.OutOfFuel
+		    Self.AbortedFlyMessage = "You are out of fuel..."
+		    
+		  Case FlightAbortException.Reason.BrakesOnWhileGearsUp
+		    Self.AbortedFlyMessage = " You try to set the brakes when gears are up..."
+		    
+		  Else
+		    Self.AbortedFlyMessage = "Unknown reason !!!"
+		    
+		  End Select
+		  
+		  System.DebugLog CurrentMethodName + ": " + Self.AbortedFlyMessage.ReplaceAll( EndOfLine, " & " )
+		  Self.CurrentMode = Plane.Mode.FlyAborted
+		  
+		  // End of the fly
 		End Sub
 	#tag EndEvent
 
@@ -1777,19 +1777,6 @@ Inherits Thread
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="CurrentMode"
-			Group="Behavior"
-			Type="Plane.Mode"
-			EditorType="Enum"
-			#tag EnumValues
-				"0 - Takeoff"
-				"1 - Cruising"
-				"2 - Landing"
-				"3 - Landed"
-				"4 - FlyAborted"
-			#tag EndEnumValues
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="CurrentTime"
 			Group="Behavior"
 			Type="Double"
@@ -1855,7 +1842,6 @@ Inherits Thread
 			Group="ID"
 			InitialValue="-2147483648"
 			Type="Integer"
-			EditorType="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="LastTime"
@@ -1908,7 +1894,6 @@ Inherits Thread
 			Visible=true
 			Group="ID"
 			Type="String"
-			EditorType="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Pitch"
@@ -1940,7 +1925,6 @@ Inherits Thread
 			Visible=true
 			Group="ID"
 			Type="String"
-			EditorType="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Thrust"
